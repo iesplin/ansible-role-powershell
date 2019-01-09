@@ -1,0 +1,10 @@
+---
+# vars file for ansible-role-powershell
+
+posh_dep_packages:
+  - apt-transport-https
+  - gnupg
+  - less
+
+posh_debian_packages:
+  - "http://ftp.debian.org/debian/pool/main/i/icu/libicu57_57.1-9_amd64.deb"

@@ -1,0 +1,30 @@
+---
+# tasks file for ansible-role-powershell
+
+- name: Install dependencies
+  apt:
+    name: "{{ posh_dep_packages }}"
+    state: present
+
+- name: Install dependencies not found in Kali repository
+  apt:
+    deb: "{{ item }}"
+  loop: "{{ posh_debian_packages | flatten(levels=1) }}"
+  when: "'Kali' in ansible_distribution"
+
+- name: Add Microsoft apt key
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+
+- name: Add Microsoft apt repository
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-stretch-prod stretch main
+    state: present
+    filename: powershell
+
+- name: Install PowerShell
+  apt:
+    name: powershell
+    state: present
+    update_cache: true
