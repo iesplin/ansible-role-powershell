@@ -10,7 +10,7 @@
   apt:
     deb: "{{ item }}"
   loop: "{{ posh_debian_packages | flatten(levels=1) }}"
-  when: "'Kali' in ansible_distribution"
+  when: "'kali' in ansible_distribution_release"
 
 - name: Add Microsoft apt key
   apt_key:
