@@ -28,3 +28,22 @@
     name: powershell
     state: present
     update_cache: true
+
+- name: Create PowerShell directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: staff
+    mode: 2775
+  loop:
+    - /usr/local/share/powershell
+    - /usr/local/share/powershell/Modules
+
+- name: Disable telemetry
+  blockinfile:
+    path: "{{ powershell_user_profile }}"
+    block: |
+      export POWERSHELL_TELEMETRY_OPTOUT=1
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - powershell"
+    state: "{{ powershell_disable_telemetry | ternary('present', 'absent') }}"

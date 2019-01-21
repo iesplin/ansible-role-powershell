@@ -1,0 +1,5 @@
+---
+# defaults file for ansible-role-powershell
+
+powershell_user_profile: /root/.bashrc
+powershell_disable_telemetry: true
