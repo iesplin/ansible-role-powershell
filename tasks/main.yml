@@ -35,7 +35,7 @@
     state: directory
     owner: root
     group: staff
-    mode: 2775
+    mode: 02775
   loop:
     - /usr/local/share/powershell
     - /usr/local/share/powershell/Modules
