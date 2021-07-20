@@ -1,6 +1,8 @@
 ansible-role-powershell
 =========
 
+**This role is no longer maintained as Kali now includes PowerShell in its repository.**
+
 Ansible role for installing Powershell in Kali
 
 Role Variables
